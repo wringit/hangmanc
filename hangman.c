@@ -28,11 +28,25 @@ bool newGame(char* words[]) {
         printf("Guess a letter or letter(s)");
         
         fgets(guess, sizeof(guess),stdin);
+        
     }
     return false;
 }
 
-char *chooseWord(char *words[]) {
+// Method that modifies game.guessedWord
+void checkUpdateGuess(struct Game game, char* guess) {
+// loop through guess and then loop through word and check for character matches
+// checking: set starting char to index of match, set game.guessedWord at that index to character
+char* wordSegment = game.word
+for (int i = 0; guess[i] != NULL; i++) {
+while (wordSegment != NULL) {
+wordSegment = strchar(wordSegment, guess[i]);
+game.guess[wordSegment-game.word] = guess[i];
+}
+}
+}
+
+char* chooseWord(char *words[]) {
     int numberOfWords = sizeof(words)/sizeof(words[0]);
     int wordIndex = rand()%numberOfWords;
     char *word = words[wordIndex];
